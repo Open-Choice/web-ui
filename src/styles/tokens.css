@@ -1,35 +1,38 @@
 /* Open Choice — shared design tokens.
- * Defines brand colors, spacing, typography for both the marketing site and the
- * registry. Light and dark themes. Variables prefixed with --oc- so they don't
- * collide with Starlight's own --sl-* tokens on pages that import both.
+ * Monochrome palette matching the tree-in-circle logo. Light theme is pure
+ * black-on-white; dark theme is pure white-on-black. Variables prefixed
+ * with --oc- so they don't collide with Starlight's --sl-* tokens.
  */
 
 :root {
-  --oc-brand:        #4f46e5;
+  --oc-brand:        #000000;
   --oc-brand-fg:     #ffffff;
-  --oc-brand-soft:   #eef2ff;
-  --oc-brand-ink:    #3730a3;
+  --oc-brand-soft:   #f0f0f0;
+  --oc-brand-ink:    #000000;
 
-  --oc-bg:           #f8f8f8;
-  --oc-surface:      #ffffff;
-  --oc-ink:          #1a1a1a;
-  --oc-ink-soft:     #555555;
-  --oc-ink-faint:    #888888;
-  --oc-hairline:     #e0e0e0;
+  --oc-bg:           #ffffff;
+  --oc-surface:      #fafafa;
+  --oc-ink:          #0a0a0a;
+  --oc-ink-soft:     #525252;
+  --oc-ink-faint:    #a3a3a3;
+  --oc-hairline:     #e5e5e5;
 
-  --oc-header-bg:    #1a1a2e;
+  --oc-header-bg:    #0a0a0a;
   --oc-header-fg:    #ffffff;
-  --oc-header-link:  #a0c4ff;
+  --oc-header-link:  #e5e5e5;
 
-  --oc-accent:       #1d4ed8;
-  --oc-success-bg:   #dcfce7;
-  --oc-success-fg:   #166534;
+  --oc-accent:       #0a0a0a;
+  --oc-success-bg:   #f0f0f0;
+  --oc-success-fg:   #0a0a0a;
 
-  --oc-code-bg:      #f5f5f7;
-  --oc-code-ink:     #1a1a1a;
+  --oc-code-bg:      #f5f5f5;
+  --oc-code-ink:     #0a0a0a;
 
   --oc-radius:       8px;
   --oc-radius-sm:    4px;
+
+  /* Logo is black on transparent; header is dark so we invert it to white. */
+  --oc-logo-invert:  1;
 
   --oc-font-sans:    -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --oc-font-mono:    ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -37,14 +40,30 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --oc-bg:        #0f0f14;
-    --oc-surface:   #1a1a22;
-    --oc-ink:       #e8e8ec;
-    --oc-ink-soft:  #a0a0a8;
-    --oc-ink-faint: #6a6a72;
-    --oc-hairline:  #2a2a32;
-    --oc-code-bg:   #12121a;
-    --oc-code-ink:  #e8e8ec;
-    --oc-accent:    #a0c4ff;
+    --oc-brand:        #ffffff;
+    --oc-brand-fg:     #000000;
+    --oc-brand-soft:   #1a1a1a;
+    --oc-brand-ink:    #ffffff;
+
+    --oc-bg:           #0a0a0a;
+    --oc-surface:      #171717;
+    --oc-ink:          #fafafa;
+    --oc-ink-soft:     #a3a3a3;
+    --oc-ink-faint:    #525252;
+    --oc-hairline:     #262626;
+
+    --oc-header-bg:    #ffffff;
+    --oc-header-fg:    #0a0a0a;
+    --oc-header-link:  #262626;
+
+    --oc-accent:       #fafafa;
+    --oc-success-bg:   #171717;
+    --oc-success-fg:   #fafafa;
+
+    --oc-code-bg:      #171717;
+    --oc-code-ink:     #fafafa;
+
+    /* Header is white in dark mode — keep the black logo as-is. */
+    --oc-logo-invert:  0;
   }
 }
