@@ -1,13 +1,13 @@
 ---
 // Thin top bar with logo + breadcrumb slot. Used by the registry; the
 // marketing site has its own Starlight-managed header.
-import { Image } from 'astro:assets';
+// Plain <img> (not astro:assets <Image>) so consumers don't need Sharp.
 import logo from '../assets/logo.png';
 ---
 
 <header class="oc-site-header">
   <a class="oc-site-header__brand" href="https://openchoice.app/" aria-label="Open Choice home">
-    <Image src={logo} alt="" width={28} height={28} loading="eager" />
+    <img src={logo.src} width={28} height={28} alt="" loading="eager" />
   </a>
   <nav class="oc-site-header__nav">
     <slot />
