@@ -1,0 +1,118 @@
+/* Endpoint help page — mirrors the app's endpoint-help-page panel:
+ * header, usage, parameters table, examples, templates, notes.
+ */
+
+.oc-endpoint {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+  color: var(--oc-ink);
+  font-family: var(--oc-font-sans);
+  line-height: 1.6;
+}
+.oc-endpoint h1 {
+  font-size: 1.7rem;
+  margin: 0 0 0.25rem;
+}
+.oc-endpoint h2 {
+  font-size: 1.1rem;
+  margin: 2rem 0 0.6rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--oc-hairline);
+}
+
+.oc-endpoint__meta {
+  color: var(--oc-ink-soft);
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+.oc-endpoint__summary {
+  font-size: 1rem;
+  margin: 0 0 1.5rem;
+}
+
+.oc-endpoint pre,
+.oc-endpoint code {
+  font-family: var(--oc-font-mono);
+}
+.oc-endpoint pre {
+  background: var(--oc-code-bg);
+  color: var(--oc-code-ink);
+  padding: 0.9rem 1rem;
+  border-radius: var(--oc-radius);
+  overflow-x: auto;
+  font-size: 0.9rem;
+  margin: 0.4rem 0 1rem;
+}
+.oc-endpoint :not(pre) > code {
+  background: var(--oc-brand-soft);
+  color: var(--oc-brand-ink);
+  padding: 0.05em 0.35em;
+  border-radius: var(--oc-radius-sm);
+  font-size: 0.9em;
+}
+
+.oc-params {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.oc-params th,
+.oc-params td {
+  border: 1px solid var(--oc-hairline);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+.oc-params thead th {
+  background: var(--oc-code-bg);
+  font-weight: 600;
+}
+.oc-params td code {
+  font-family: var(--oc-font-mono);
+}
+
+.oc-example {
+  margin-bottom: 1rem;
+}
+.oc-example__title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.oc-template {
+  background: var(--oc-surface);
+  border: 1px solid var(--oc-hairline);
+  border-radius: var(--oc-radius);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+}
+.oc-template__title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.oc-template__summary {
+  color: var(--oc-ink-soft);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.oc-template__copy {
+  appearance: none;
+  background: var(--oc-brand-soft);
+  color: var(--oc-brand-ink);
+  border: 1px solid var(--oc-brand-soft);
+  border-radius: var(--oc-radius-sm);
+  padding: 0.3rem 0.65rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  margin-top: 0.4rem;
+}
+.oc-template__copy:hover {
+  background: var(--oc-brand);
+  color: var(--oc-brand-fg);
+}
+
+.oc-notes { padding-left: 1.25rem; margin: 0.25rem 0 0.5rem; }
+.oc-notes li { margin-bottom: 0.25rem; }

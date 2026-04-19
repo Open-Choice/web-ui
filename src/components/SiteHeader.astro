@@ -1,0 +1,40 @@
+---
+// Thin top bar with a breadcrumb slot. Used by the registry; the marketing site
+// has its own Starlight-managed header.
+
+const { children } = Astro.props;
+---
+
+<header class="oc-site-header">
+  <nav class="oc-site-header__nav">
+    <slot />
+  </nav>
+</header>
+
+<style>
+  .oc-site-header {
+    background: var(--oc-header-bg);
+    color: var(--oc-header-fg);
+    padding: 0 1.5rem;
+    height: 52px;
+    display: flex;
+    align-items: center;
+  }
+  .oc-site-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+  }
+  .oc-site-header :global(a) {
+    color: var(--oc-header-link);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .oc-site-header :global(a:hover) {
+    text-decoration: underline;
+  }
+  .oc-site-header :global(.sep) {
+    color: #555;
+  }
+</style>

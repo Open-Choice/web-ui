@@ -1,0 +1,14 @@
+---
+const { text = '' } = Astro.props as { text?: string };
+---
+
+<footer class="oc-site-footer">{text}</footer>
+
+<style>
+  .oc-site-footer {
+    text-align: center;
+    color: var(--oc-ink-faint);
+    font-size: 0.8rem;
+    margin: 3rem 0 1.5rem;
+  }
+</style>

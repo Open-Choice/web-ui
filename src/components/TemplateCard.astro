@@ -1,0 +1,46 @@
+---
+// A single .oce template: title, summary, code block, copy-to-clipboard button.
+
+interface Template {
+  template_id?: string;
+  title?: string;
+  summary?: string;
+  oce_text?: string;
+}
+
+const { template } = Astro.props as { template: Template };
+const heading = template.title ?? template.template_id ?? 'Template';
+const body    = template.oce_text ?? '';
+---
+
+<article class="oc-template">
+  <div class="oc-template__title">{heading}</div>
+  {template.summary && <div class="oc-template__summary">{template.summary}</div>}
+  {body && <pre><code>{body}</code></pre>}
+  {body && (
+    <button
+      class="oc-template__copy"
+      type="button"
+      data-oc-copy={body}
+    >
+      Copy
+    </button>
+  )}
+</article>
+
+<script>
+  // Clipboard handler: delegated once per page.
+  if (!(window as any).__ocCopyWired) {
+    (window as any).__ocCopyWired = true;
+    document.addEventListener('click', (e) => {
+      const t = e.target as HTMLElement;
+      if (!t?.matches?.('.oc-template__copy')) return;
+      const text = t.getAttribute('data-oc-copy') ?? '';
+      navigator.clipboard?.writeText(text).then(() => {
+        const orig = t.textContent;
+        t.textContent = 'Copied!';
+        setTimeout(() => { t.textContent = orig; }, 1200);
+      });
+    });
+  }
+</script>

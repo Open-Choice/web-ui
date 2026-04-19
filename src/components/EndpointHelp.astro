@@ -1,0 +1,112 @@
+---
+// Renders an endpoint's help JSON in the same section order as the Open Choice
+// app's endpoint-help-page panel:
+//   Header (title, meta, summary) → Usage → Parameters → Examples → Templates → Notes.
+//
+// Inputs:
+//   help       — the plugin's static/help/<command>.json
+//   templates  — array of the plugin's static/examples/<command>.json entries
+//   plugin     — { display_name, plugin_id, version }
+//   endpointId — the command name
+
+import ParametersTable from './ParametersTable.astro';
+import TemplateCard    from './TemplateCard.astro';
+
+interface Arg {
+  name: string;
+  type?: string;
+  required?: boolean;
+  description?: string;
+}
+interface HelpDoc {
+  title?: string;
+  summary?: string;
+  usage?: string;
+  arguments?: Arg[];
+  parameters?: Arg[];
+  examples?: { title?: string; body: string }[];
+  notes?: string[];
+  output_notes?: string[];
+}
+interface TemplateDoc {
+  template_id?: string;
+  title?: string;
+  summary?: string;
+  oce_text?: string;
+}
+interface PluginRef {
+  display_name?: string;
+  plugin_id: string;
+  version?: string;
+}
+
+const {
+  help,
+  templates = [],
+  plugin,
+  endpointId,
+} = Astro.props as {
+  help: HelpDoc;
+  templates?: TemplateDoc[];
+  plugin: PluginRef;
+  endpointId: string;
+};
+
+const params  = help.parameters ?? help.arguments ?? [];
+const notes   = help.notes ?? help.output_notes ?? [];
+const examples = help.examples ?? [];
+const pluginLabel = plugin.display_name ?? plugin.plugin_id;
+const versionPart = plugin.version ? ` v${plugin.version}` : '';
+---
+
+<section class="oc-endpoint">
+  <h1>{help.title ?? endpointId}</h1>
+  <div class="oc-endpoint__meta">
+    {pluginLabel}{versionPart} &middot; endpoint: <code>{endpointId}</code>
+  </div>
+  {help.summary && <p class="oc-endpoint__summary">{help.summary}</p>}
+
+  {help.usage && (
+    <>
+      <h2>Usage</h2>
+      <pre><code>{help.usage}</code></pre>
+    </>
+  )}
+
+  {params.length > 0 && (
+    <>
+      <h2>Parameters</h2>
+      <ParametersTable params={params} />
+    </>
+  )}
+
+  {examples.length > 0 && (
+    <>
+      <h2>Examples</h2>
+      {examples.map((ex) => (
+        <div class="oc-example">
+          {ex.title && <div class="oc-example__title">{ex.title}</div>}
+          <pre><code>{ex.body}</code></pre>
+        </div>
+      ))}
+    </>
+  )}
+
+  {templates.length > 0 && (
+    <>
+      <h2>Templates &amp; Examples</h2>
+      {templates.map((t) => (
+        <TemplateCard template={t} />
+      ))}
+    </>
+  )}
+
+  {notes.length > 0 && (
+    <>
+      <h2>Notes</h2>
+      <ul class="oc-notes">
+        {notes.map((n) => (<li>{n}</li>))}
+      </ul>
+    </>
+  )}
+</section>

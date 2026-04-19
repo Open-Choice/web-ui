@@ -1,0 +1,26 @@
+{
+  "name": "@open-choice/web-ui",
+  "version": "0.1.0",
+  "description": "Shared design tokens and Astro components for the Open Choice marketing site and registry.",
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    "./styles/tokens.css":     "./src/styles/tokens.css",
+    "./styles/endpoint.css":   "./src/styles/endpoint.css",
+    "./components/EndpointHelp.astro":  "./src/components/EndpointHelp.astro",
+    "./components/ParametersTable.astro": "./src/components/ParametersTable.astro",
+    "./components/TemplateCard.astro":    "./src/components/TemplateCard.astro",
+    "./components/SiteHeader.astro":      "./src/components/SiteHeader.astro",
+    "./components/SiteFooter.astro":      "./src/components/SiteFooter.astro"
+  },
+  "peerDependencies": {
+    "astro": ">=5.0.0"
+  },
+  "license": "Apache-2.0 OR MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/open-choice/web-ui"
+  }
+}
